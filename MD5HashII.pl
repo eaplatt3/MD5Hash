@@ -1,11 +1,11 @@
-################################################
+#########################################
 # Earl Platt III
 # 5/5/2019
 # BCS 316 - Perl Programming
-# MD5 Hash Part I
+# MD5 Hash Part II
 # Input - User Enters Username & Password
-# Output - Creates an MD5 Hash for the password
-################################################
+# Output - Gives User Access or Not
+##########################################
 
 use strict;
 use warnings;
@@ -13,6 +13,7 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $username;
 my $password;
+my $text;
 my $loginFile = 'loginfile.txt';
 
 print "\n";
@@ -30,13 +31,20 @@ chomp $password;
 
 my $md5Password = md5($password);
 
-open(my $file, '>', $loginFile) or die;
+open(my $file, '<', $loginFile) or die;
 
-print $file "$username";
-chomp $username;
-print $file "\n";
-print $file "$md5Password";
-chomp "$md5Password";
+while($text = <$file>){
+	chomp $text;
+	print "$text\n";
+	
+	if($username eq $text && $password == $text){
+		print "Access Granted\n";
+		}
+	else {
+		print "Access Denied";
+		}
+	
+	}
 
 close $file;
 
