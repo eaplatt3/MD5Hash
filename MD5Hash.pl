@@ -13,10 +13,11 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $username;
 my $password;
+my $loginFile = 'loginfile.txt'
 
 print "\n";
 print "Enter a Username & Password";
-print "\n"
+print "\n";
 
 print "Username: ";
 $username = <STDIN>;
@@ -25,9 +26,13 @@ print "\n";
 print "Password: ";
 $password = <STDIN>;
 
-md5($username);
-md5($password);
+my $md5Password = md5($password);
 
+open(my $file, '>', $loginFile) or die;
 
+print $file "$username";
+print $file "$md5Password";
+
+close $file;
 
 
