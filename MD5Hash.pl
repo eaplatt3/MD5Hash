@@ -1,11 +1,11 @@
-##########################################
+################################################
 # Earl Platt III
 # 5/5/2019
 # BCS 316 - Perl Programming
 # MD5 Hash Part I
 # Input - User Enters Username & Password
-# Output - Gives Access or not
-##########################################
+# Output - Creates an MD5 Hash for the password
+################################################
 
 use strict;
 use warnings;
